@@ -691,6 +691,15 @@ condensedCompletionMenu |Boolean| option. If enabled, minimizes completion
 			Moves all additional details to info popup.
 			Caveat: LazyDoc will override moved details!
 
+					*lsp-opt-ignoreCompleteItemsIsIncomplete*
+ignoreCompleteItemsIsIncomplete |List of strings| option.
+			Optional list of LSP server names for which
+			'IsIncomplete' messages should be ignored and
+			filtering of received completion item lists
+			is enforced. This is helpful for LSP servers
+			that are misbehaving and always send this
+			kind of 'IsIncomplete' messages.
+
 For example, to disable the automatic placement of signs for the LSP
 diagnostic messages, you can add the following line to your .vimrc file: >
 
@@ -1897,6 +1906,12 @@ The following default options and highlight groups are provided: >
 	let g:LspTypeHierarchyPopupBorder = []
 	let g:LspTypeHierarchyPopupBorderchars = ['─', '│', '─', '│', '╭', '╮', '╯', '╰']
 <
+	highlight LspDiagMsgPopup guibg=NONE ctermbg=NONE
+	highlight LspDiagMsgPopupBorder guibg=NONE ctermbg=NONE
+	let g:LspDiagMsgPopupBorderhighlight = ['LspDiagMsgPopupBorder']
+	let g:LspDiagMsgPopupBorder = []
+	let g:LspDiagMsgPopupBorderchars = ['─', '│', '─', '│', '╭', '╮', '╯', '╰']
+
 Please refer to |popup_setoptions()| for more information.
 
 For styling the completion menu please refer to |hl-pmenu|.
